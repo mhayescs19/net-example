@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+    <body>
+        <form class="createPost" action="/" method="POST">
+            <input placeholder="Name" name="name">
+            <input placeholder="Post Description" name="post">
+            <button class="submit">Submit</button>
+        </form>
+
+        {% for post in posts %}
+            <div class="postTitle">{{ post[1] }}</div>
+            <div class="postContent">{{ post[2] }}</div>
+        {% endfor %}
+    </body>
+</html>

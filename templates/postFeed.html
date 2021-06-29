@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Individual Post</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles/individual-post.css') }}">
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=RocknRoll+One&display=swap');
+
+        *
+        {
+            font-size: 14px;
+            font-family: Rockwell;
+        }
+
+        body {
+
+            min-height: 100vh;
+            background: #d0d0d0;
+        }
+        /* div for entire content area */
+        .container {
+            position: relative;
+            padding: 10px;
+        }
+        /* div encapsulating background */
+        .container .center {
+            display: flex;
+            justify-content: center;
+            position: relative;
+        }
+        /* manages styling for actual content of post */
+        .container .center .content {
+            padding: 10px;
+            min-width: 300px;
+            max-width: 300px;
+            background: #f8f8f8;
+            border-radius: 10px;
+        }
+        /* default image styling/sizing */
+        .container .center .content .postImage img.mainPhoto {
+            width: 300px;
+            height: auto;
+        }
+        .container .center .content .addressImage img.addressPhoto {
+            width: 300px;
+            height: auto;
+        }
+    </style>
+
+</head>
+<body>
+<div class="container">
+    <form class="createPost" action="/" method="POST">
+        <input placeholder="Name" name="user_name">
+        <input placeholder="Rating" name="rating">
+        <input placeholder="Location" name="location">
+        <input placeholder="Busyiness" name="busy">
+        <input placeholder="Address" name="address">
+        <input placeholder="Post Title" name="name">
+        <input placeholder="Post Description" name="content">
+
+        <button class="submit">Submit</button>
+    </form>
+    <div class="center">
+        {% for post in posts %}
+            <div class="content">
+                <div class="postImage">
+                    <img class="mainPhoto" src="https://i.pinimg.com/originals/bd/4c/c9/bd4cc98b5bf34081b4ac4ae95038c5f1.jpg">
+                </div>
+                <div class="postInfo">
+                    <p class="user">@{{post[1]}}</p>
+                    <p class="content">{{post[7]}}</p>
+                    <p class="rating">Rating: {{post[2]}}</p>
+                    <p class="location">{{post[3]}}</p>
+                    <p class="hours">Congestion: {{post[4]}}</p>
+                    <p class="address">Address: {{post[5]}}</p>
+                    <p class="name">Address: {{post[6]}}</p>
+                </div>
+                <div class="addressImage">
+                    <img class="addressPhoto" src="https://miro.medium.com/max/1400/1*SxKI1ic3_ug-Lxf0__nmPg.jpeg">
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</div>
+</body>
+</html>
